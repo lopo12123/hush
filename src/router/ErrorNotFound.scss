@@ -7,6 +7,6 @@
     justify-content: center;
 
     .spin {
-        @include use-flip__xy(5s);
+        @include use-blink(5s);
     }
 }
