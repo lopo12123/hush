@@ -1,0 +1,38 @@
+.menuitem {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    color: #008b8b;
+    cursor: pointer;
+    transition: background-color 1s;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &:hover {
+        background: #008b8b1a;
+    }
+
+    .bubble {
+        position: relative;
+        width: 16px;
+        height: 16px;
+        margin: 0 8px;
+        padding: 4px;
+        border: solid 1px #008b8b;
+        border-radius: 50%;
+        transition: all 0.5s;
+
+        &_active {
+            @extend .bubble;
+            background-color: #008b8b;
+            background-clip: content-box;
+        }
+
+        &_default {
+            @extend .bubble;
+            background-color: transparent;
+            background-clip: content-box;
+        }
+    }
+}
