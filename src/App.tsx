@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import './App.css'
+import Styles from "./App.module.scss";
+import { Toaster } from "react-hot-toast";
 
-function App() {
-    const [ count, setCount ] = useState(0)
-
+export default () => {
     return (
-        <div className="App">
-            <button onClick={ () => setCount((count) => count + 1) }>
-                count is { count }
-            </button>
+        <div className={ Styles.app }>
+            <Toaster/>
+            <div className={ Styles.menu }>
+                123
+            </div>
+            <div className={ Styles.workspace }>
+                123
+            </div>
         </div>
     )
 }
-
-export default App

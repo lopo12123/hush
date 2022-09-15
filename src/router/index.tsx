@@ -7,12 +7,13 @@ const router = createHashRouter([
     {
         path: '/',
         element: <App/>,
-        errorElement: <ErrorNotFound/>
+        errorElement: <ErrorNotFound/>,
+        children: []
     },
     {
         path: '/icons',
         element: <IconPreview/>,
-        errorElement: <ErrorNotFound/>
+        errorElement: <ErrorNotFound/>,
     }
 ])
 
