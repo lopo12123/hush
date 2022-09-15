@@ -1,13 +1,15 @@
 import Styles from "./App.module.scss";
 import { Suspense, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { hashRoutes } from "./router/hash";
 import MenuItem from "./components/MenuItem";
 
 export default () => {
     const navigator = useNavigate()
-    const [ activeIdx, setActiveIdx ] = useState(0)
+    const location = useLocation()
+
+    const [ activePath, setActivePath ] = useState(location.pathname.slice(1))
 
     return (
         <div className={ Styles.app }>
@@ -21,9 +23,9 @@ export default () => {
                         // 一个子页面一个菜单项
                         return <MenuItem
                             key={ idx } detail={ route }
-                            active={ activeIdx === idx }
+                            active={ activePath === route.path }
                             onClick={ () => {
-                                setActiveIdx(idx)
+                                setActivePath(route.path!)
                                 navigator(route.path!)
                             } }/>
                     })
