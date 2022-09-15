@@ -1,8 +1,12 @@
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";                                //icons
+import "./styles/index.css";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
-import "./styles/index.css";
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
     .render(
