@@ -1,0 +1,77 @@
+.workspaceTemplate {
+    @include use-scroll();
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0 32px;
+    overflow: auto;
+
+    .blockTitle {
+        position: relative;
+        height: 48px;
+        margin: 12px 0;
+        font-size: 32px;
+        line-height: 48px;
+    }
+
+    .desc {
+        position: relative;
+        width: 100%;
+        height: fit-content;
+        font-style: italic;
+    }
+
+    .operationTitle {
+        position: relative;
+        height: 32px;
+        margin: 8px 0;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .operationGroup {
+        position: relative;
+        width: 100%;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        .operationBtn {
+            position: relative;
+            width: fit-content;
+            min-width: 80px;
+            height: 32px;
+            margin-right: 16px;
+            padding: 0 8px;
+            border: solid 1px #008b8b;
+            border-radius: 8px;
+            font-weight: bold;
+            line-height: 32px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+
+            &:hover {
+                background-color: #008b8b1a;
+            }
+
+            &:active {
+                background-color: #008b8b33;
+            }
+        }
+    }
+
+    .sourceBox {
+        @include use-scroll(#008b8b);
+        position: relative;
+        width: 100%;
+        height: 150px;
+        padding: 8px;
+        border: solid 1px #008b8b;
+        border-radius: 8px;
+        background-color: #008b8b0d;
+        color: #008b8b;
+        resize: none;
+    }
+}
