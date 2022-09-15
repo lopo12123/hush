@@ -6,6 +6,9 @@ export default defineConfig({
     base: './',
     plugins: [ react() ],
     css: {
+        modules: {
+            scopeBehaviour: 'local'
+        },
         preprocessorOptions: {
             scss: {
                 additionalData: `@import "src/styles/mixin.scss";`
