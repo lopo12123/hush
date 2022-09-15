@@ -1,4 +1,6 @@
 import Styles from "./App.module.scss";
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 export default () => {
@@ -6,10 +8,12 @@ export default () => {
         <div className={ Styles.app }>
             <Toaster/>
             <div className={ Styles.menu }>
-                123
+
             </div>
             <div className={ Styles.workspace }>
-                123
+                <Suspense fallback={ <div>加载中</div> }>
+                    <Outlet/>
+                </Suspense>
             </div>
         </div>
     )

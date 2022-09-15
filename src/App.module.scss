@@ -2,15 +2,18 @@
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .menu {
+        @include use-scroll(#ed46121a);
         position: relative;
         width: 300px;
         height: 100%;
-        color: #ff6e42;
+        border-right: solid 1px #ed46121a;
+        overflow: auto;
     }
 
     .workspace {
