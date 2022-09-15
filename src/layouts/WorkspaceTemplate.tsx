@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export type WorkspaceTemplateConfig = {
     // 描述
-    desc: string
+    desc: string[]
     // 哈希方法(列表)
     hashList: {
         name: string
@@ -18,7 +18,15 @@ export default (props: WorkspaceTemplateConfig) => {
     return (
         <div className={ Styles.workspaceTemplate }>
             <div className={ Styles.blockTitle }>Description</div>
-            <div className={ Styles.desc }>{ props.desc }</div>
+            <div className={ Styles.desc }>
+                {
+                    props.desc.map(descPart => {
+                        return <div style={ {
+                            margin: '8px 0'
+                        } }>{ descPart }</div>
+                    })
+                }
+            </div>
             <div className={ Styles.blockTitle }>Operation</div>
             <div className={ Styles.operationTitle }>Input</div>
             <textarea
