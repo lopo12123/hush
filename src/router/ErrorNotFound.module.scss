@@ -1,0 +1,41 @@
+.errorNotFound {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .spin {
+        @include use-blink(5s);
+    }
+
+    .errorMsg {
+        color: #ff6e42;
+        font-style: italic;
+    }
+
+    .operations {
+        position: relative;
+        width: fit-content;
+        color: #008b8b;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        > div {
+            position: relative;
+            width: fit-content;
+            height: 32px;
+            margin: 0 16px;
+            line-height: 32px;
+            cursor: pointer;
+            user-select: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
