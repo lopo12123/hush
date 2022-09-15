@@ -4,6 +4,7 @@ import { Navigate, RouteObject } from "react-router-dom";
 const Md5 = lazy(() => import("../views/hash/Md5"))
 const Sha1 = lazy(() => import("../views/hash/Sha1"))
 const Sha2 = lazy(() => import("../views/hash/Sha2"))
+const Sha3 = lazy(() => import("../views/hash/Sha3"))
 
 export const hashRoutes: RouteObject[] = [
     {
@@ -17,6 +18,10 @@ export const hashRoutes: RouteObject[] = [
     {
         path: 'sha2',
         element: <Sha2/>
+    },
+    {
+        path: 'sha3',
+        element: <Sha3/>
     },
     {
         // 进入页面的默认跳转
