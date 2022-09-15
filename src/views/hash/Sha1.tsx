@@ -4,6 +4,7 @@ import SHA1 from "crypto-js/sha1";
 
 export default () => {
     return <WorkspaceTemplate
+        title="SHA-1"
         desc={ [ sha1 ] }
         hashList={ [
             {

@@ -2,6 +2,8 @@ import Styles from "./WorkspaceTemplate.module.scss";
 import { useState } from "react";
 
 export type WorkspaceTemplateConfig = {
+    // 标题
+    title: string
     // 描述
     desc: string[]
     // 哈希方法(列表)
@@ -17,6 +19,7 @@ export default (props: WorkspaceTemplateConfig) => {
 
     return (
         <div className={ Styles.workspaceTemplate }>
+            <div className={ Styles.workspaceTitle }>{ props.title }</div>
             <div className={ Styles.blockTitle }>Description</div>
             <div className={ Styles.desc }>
                 {

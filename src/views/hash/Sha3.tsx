@@ -4,6 +4,7 @@ import SHA3 from "crypto-js/sha3";
 
 export default () => {
     return <WorkspaceTemplate
+        title="SHA-3"
         desc={ [ sha3, sha3Note, sha3Addition ] }
         hashList={ [
             {

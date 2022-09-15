@@ -4,6 +4,7 @@ import MD5 from "crypto-js/md5";
 
 export default () => {
     return <WorkspaceTemplate
+        title="MD5"
         desc={ [ md5 ] }
         hashList={ [
             {

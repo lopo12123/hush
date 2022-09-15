@@ -7,6 +7,7 @@ import SHA384 from "crypto-js/sha384";
 
 export default () => {
     return <WorkspaceTemplate
+        title="SHA-2"
         desc={ [ sha256, sha512, sha224_384 ] }
         hashList={ [
             {
