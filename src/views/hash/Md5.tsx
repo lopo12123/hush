@@ -9,8 +9,8 @@ export default () => {
         hashList={ [
             {
                 name: 'MD5',
-                fn: (t) => {
-                    return MD5(t) + ''
+                fn: (t: string, encoder: any) => {
+                    return MD5(t).toString(encoder)
                 }
             }
         ] }

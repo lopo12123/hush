@@ -9,8 +9,8 @@ export default () => {
         hashList={ [
             {
                 name: 'sha1',
-                fn: (t) => {
-                    return SHA1(t) + ''
+                fn: (t, encoder: any) => {
+                    return SHA1(t).toString(encoder)
                 }
             }
         ] }

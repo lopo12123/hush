@@ -9,26 +9,26 @@ export default () => {
         hashList={ [
             {
                 name: 'sha3 (512)',
-                fn: (t) => {
-                    return SHA3(t, { outputLength: 512 }) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA3(t, { outputLength: 512 }).toString(encoder)
                 }
             },
             {
                 name: 'sha3 (384)',
-                fn: (t) => {
-                    return SHA3(t, { outputLength: 384 }) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA3(t, { outputLength: 384 }).toString(encoder)
                 }
             },
             {
                 name: 'sha3 (256)',
-                fn: (t) => {
-                    return SHA3(t, { outputLength: 256 }) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA3(t, { outputLength: 256 }).toString(encoder)
                 }
             },
             {
                 name: 'sha3 (224)',
-                fn: (t) => {
-                    return SHA3(t, { outputLength: 224 }) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA3(t, { outputLength: 224 }).toString(encoder)
                 }
             },
         ] }

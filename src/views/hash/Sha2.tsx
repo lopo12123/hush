@@ -12,26 +12,26 @@ export default () => {
         hashList={ [
             {
                 name: 'sha256',
-                fn: (t) => {
-                    return SHA256(t) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA256(t).toString(encoder)
                 }
             },
             {
                 name: 'sha512',
-                fn: (t) => {
-                    return SHA512(t) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA512(t).toString(encoder)
                 }
             },
             {
                 name: 'sha224',
-                fn: (t) => {
-                    return SHA224(t) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA224(t).toString(encoder)
                 }
             },
             {
                 name: 'sha384',
-                fn: (t) => {
-                    return SHA384(t) + ''
+                fn: (t: string, encoder: any) => {
+                    return SHA384(t).toString(encoder)
                 }
             },
         ] }
