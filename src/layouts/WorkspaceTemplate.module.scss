@@ -83,4 +83,11 @@
         color: #008b8b;
         resize: none;
     }
+
+    .outTypeBox {
+        @include use-scroll(#008b8b1a);
+        position: relative;
+        width: 100%;
+        white-space: nowrap;
+    }
 }

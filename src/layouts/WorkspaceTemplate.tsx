@@ -1,5 +1,9 @@
 import Styles from "./WorkspaceTemplate.module.scss";
 import { useState } from "react";
+import { SelectButton } from "primereact/selectbutton";
+import "../scripts/hashEncode"
+import { HashEncode, HashType } from "../scripts/hashEncode";
+import toast from "react-hot-toast";
 
 export type WorkspaceTemplateConfig = {
     // 标题
@@ -9,13 +13,14 @@ export type WorkspaceTemplateConfig = {
     // 哈希方法(列表)
     hashList: {
         name: string
-        fn: (t: string) => string
+        fn: (t: string, encoder?: any) => string
     }[]
 }
 
 export default (props: WorkspaceTemplateConfig) => {
     const [ text, setText ] = useState('')
     const [ result, setResult ] = useState('')
+    const [ outType, setOutType ] = useState<HashType>('Base64')
 
     return (
         <div className={ Styles.workspaceTemplate }>
@@ -23,10 +28,8 @@ export default (props: WorkspaceTemplateConfig) => {
             <div className={ Styles.blockTitle }>Description</div>
             <div className={ Styles.desc }>
                 {
-                    props.desc.map(descPart => {
-                        return <div style={ {
-                            margin: '8px 0'
-                        } }>{ descPart }</div>
+                    props.desc.map((descPart, idx) => {
+                        return <div key={ idx } style={ { margin: '8px 0' } }>{ descPart }</div>
                     })
                 }
             </div>
@@ -36,7 +39,19 @@ export default (props: WorkspaceTemplateConfig) => {
                 className={ Styles.sourceBox }
                 value={ text } placeholder="在此输入源字符串"
                 onChange={ (e) => setText(e.target.value) }/>
-            <div className={ Styles.operationTitle }>Hash</div>
+            <div className={ Styles.operationTitle }>Output Type</div>
+            <div className={ Styles.outTypeBox }>
+                <SelectButton
+                    value={ outType }
+                    options={ Object.keys(HashEncode) }
+                    optionDisabled={ (val) => {
+                        return val === 'Utf8'
+                    } }
+                    onChange={ (e) => {
+                        setOutType(e.value)
+                    } }/>
+            </div>
+            <div className={ Styles.operationTitle }>Execute</div>
             <div className={ Styles.operationGroup }>
                 {
                     props.hashList
@@ -45,13 +60,23 @@ export default (props: WorkspaceTemplateConfig) => {
                                 <div className={ Styles.operationBtn }
                                      role="button" key={ idx }
                                      onClick={ () => {
-                                         setResult(hashItem.fn(text))
-                                     } }>{ hashItem.name }</div>
+                                         try {
+                                             const result = hashItem.fn(text, HashEncode[outType])
+                                             setResult(result)
+                                             toast.success(outType)
+                                         }
+                                         catch (e: any) {
+                                             console.error(e)
+                                             toast.error(String(e))
+                                         }
+                                     } }>
+                                    { hashItem.name }
+                                </div>
                             )
                         })
                 }
             </div>
-            <div className={ Styles.operationTitle }>Output</div>
+            <div className={ Styles.operationTitle }>Output String</div>
             <textarea
                 className={ Styles.sourceBox }
                 value={ result } readOnly
