@@ -3,6 +3,7 @@ import { Suspense, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { hashRoutes } from "./router/hash";
+import PageIsLoading from "./router/PageIsLoading";
 import MenuItem from "./components/MenuItem";
 
 export default () => {
@@ -32,7 +33,7 @@ export default () => {
                 }
             </div>
             <div className={ Styles.workspace }>
-                <Suspense fallback={ <div>加载中</div> }>
+                <Suspense fallback={ <PageIsLoading/> }>
                     <Outlet/>
                 </Suspense>
             </div>
