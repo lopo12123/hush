@@ -8,8 +8,9 @@ import MenuItem from "./components/MenuItem";
 
 export default () => {
     const navigator = useNavigate()
+    const location = useLocation()
 
-    const [ activePath, setActivePath ] = useState(hashRoutes[0].path)
+    const [ activePath, setActivePath ] = useState(location.pathname.slice(1))
 
     return (
         <div className={ Styles.app }>
@@ -18,7 +19,7 @@ export default () => {
                 {
                     hashRoutes.map((route, idx) => {
                         // 重定向不用渲染菜单
-                        if(route.path === '') return;
+                        if(route.path === '' || route.path === 'loading') return;
 
                         // 一个子页面一个菜单项
                         return <MenuItem

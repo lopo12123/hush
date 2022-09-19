@@ -1,5 +1,7 @@
 import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
+import PageIsLoading from "./PageIsLoading";
+import ErrorNotFound from "./ErrorNotFound";
 
 const Md5 = lazy(() => import("../views/hash/Md5"))
 const Sha1 = lazy(() => import("../views/hash/Sha1"))
@@ -22,6 +24,11 @@ export const hashRoutes: RouteObject[] = [
     {
         path: 'sha3',
         element: <Sha3/>
+    },
+    {
+        path: 'loading',
+        element: <PageIsLoading/>,
+        errorElement: <ErrorNotFound/>
     },
     {
         // 进入页面的默认跳转
