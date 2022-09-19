@@ -18,7 +18,7 @@ const router = createHashRouter([
         errorElement: <ErrorNotFound/>,
     },
     {
-        path: 'loading',
+        path: '/loading',
         element: <PageIsLoading/>,
         errorElement: <ErrorNotFound/>
     }

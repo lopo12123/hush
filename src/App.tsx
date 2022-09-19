@@ -8,9 +8,8 @@ import MenuItem from "./components/MenuItem";
 
 export default () => {
     const navigator = useNavigate()
-    const location = useLocation()
 
-    const [ activePath, setActivePath ] = useState(location.pathname.slice(1))
+    const [ activePath, setActivePath ] = useState(hashRoutes[0].path)
 
     return (
         <div className={ Styles.app }>
