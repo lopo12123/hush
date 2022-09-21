@@ -1,6 +1,6 @@
 import WorkspaceTemplate from "../../layouts/WorkspaceTemplate";
 import { md5 } from "../../desc.json"
-import MD5 from "crypto-js/md5";
+import { hashString, EncodeType } from "../../scripts/hash";
 
 export default () => {
     return <WorkspaceTemplate
@@ -9,8 +9,8 @@ export default () => {
         hashList={ [
             {
                 name: 'MD5',
-                fn: (t: string, encoder: any) => {
-                    return MD5(t).toString(encoder)
+                fn: (t: string, encode: EncodeType) => {
+                    return hashString(t, 'md5', encode)
                 }
             }
         ] }

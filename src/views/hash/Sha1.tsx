@@ -1,6 +1,6 @@
 import WorkspaceTemplate from "../../layouts/WorkspaceTemplate";
 import { sha1 } from "../../desc.json"
-import SHA1 from "crypto-js/sha1";
+import { EncodeType, hashString } from "../../scripts/hash";
 
 export default () => {
     return <WorkspaceTemplate
@@ -9,8 +9,8 @@ export default () => {
         hashList={ [
             {
                 name: 'sha1',
-                fn: (t, encoder: any) => {
-                    return SHA1(t).toString(encoder)
+                fn: (t, encode: EncodeType) => {
+                    return hashString(t, 'sha1', encode)
                 }
             }
         ] }

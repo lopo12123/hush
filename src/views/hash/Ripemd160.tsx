@@ -1,5 +1,5 @@
 import WorkspaceTemplate from "../../layouts/WorkspaceTemplate";
-import RIPEMD160 from "crypto-js/ripemd160";
+import { EncodeType, hashString } from "../../scripts/hash";
 
 export default () => {
     return <WorkspaceTemplate
@@ -8,8 +8,8 @@ export default () => {
         hashList={ [
             {
                 name: 'ripemd160',
-                fn: (t, encoder: any) => {
-                    return RIPEMD160(t).toString(encoder)
+                fn: (t, encode: EncodeType) => {
+                    return hashString(t, 'ripemd160', encode)
                 }
             }
         ] }

@@ -13,7 +13,7 @@ export type WorkspaceTemplateConfig = {
     // 哈希方法(列表)
     hashList: {
         name: string
-        fn: (t: string, encoder?: any) => string
+        fn: (t: string, encode: EncodeType) => string
     }[]
 }
 
@@ -61,9 +61,11 @@ export default (props: WorkspaceTemplateConfig) => {
                                      role="button" key={ idx }
                                      onClick={ () => {
                                          try {
-                                             const result = hashItem.fn(text, ResultEncoder[outType])
+                                             const result = hashItem.fn(text, outType)
                                              setResult(result)
-                                             toast.success(outType)
+                                             toast.success(<span>
+                                                 Get <b>{ outType }</b> result using <b>{ hashItem.name.toUpperCase() }</b>.
+                                             </span>)
                                          }
                                          catch (e: any) {
                                              console.error(e)
