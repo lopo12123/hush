@@ -63,9 +63,9 @@ export default (props: WorkspaceTemplateConfig) => {
                                          try {
                                              const result = hashItem.fn(text, outType)
                                              setResult(result)
-                                             toast.success(<span>
-                                                 Get <b>{ outType }</b> result using <b>{ hashItem.name.toUpperCase() }</b>.
-                                             </span>)
+                                             toast.success(
+                                                 <span>Get <b>{ outType }</b> result using <b>{ hashItem.name.toUpperCase() }</b>.</span>
+                                             )
                                          }
                                          catch (e: any) {
                                              console.error(e)
@@ -78,7 +78,7 @@ export default (props: WorkspaceTemplateConfig) => {
                         })
                 }
             </div>
-            <div className={ Styles.operationTitle }>Output String</div>
+            <div className={ Styles.operationTitle }>Output</div>
             <textarea
                 className={ Styles.sourceBox }
                 value={ result } readOnly

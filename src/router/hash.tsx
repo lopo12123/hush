@@ -8,6 +8,7 @@ const Sha1 = lazy(() => import("../views/hash/Sha1"))
 const Sha2 = lazy(() => import("../views/hash/Sha2"))
 const Sha3 = lazy(() => import("../views/hash/Sha3"))
 const Ripemd160 = lazy(() => import("../views/hash/Ripemd160"))
+const FileHash = lazy(() => import("../views/hash/FileHash"))
 
 export const hashRoutes: RouteObject[] = [
     {
@@ -29,6 +30,10 @@ export const hashRoutes: RouteObject[] = [
     {
         path: 'ripemd160',
         element: <Ripemd160/>
+    },
+    {
+        path: 'file-hash',
+        element: <FileHash/>
     },
     {
         path: 'loading',

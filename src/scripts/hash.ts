@@ -35,24 +35,16 @@ export const ResultEncoder: { [k in EncodeType]: any } = {
 // region 读取文件为指定格式
 export type TargetType = 'ArrayBuffer' | 'BinaryString' | 'DataURL' | 'Text'
 
-export function readFileToType(target: 'ArrayBuffer'): Promise<ArrayBuffer>
-export function readFileToType(target: 'BinaryString' | 'DataURL' | 'Text'): Promise<string>
-export function readFileToType(target: TargetType): Promise<ArrayBuffer | string> {
+export function readFileToType(file: File, target: 'ArrayBuffer'): Promise<ArrayBuffer>
+export function readFileToType(file: File, target: 'BinaryString' | 'DataURL' | 'Text'): Promise<string>
+export function readFileToType(file: File, target: TargetType): Promise<ArrayBuffer | string> {
     return new Promise((resolve, reject) => {
-        const _ipt = document.createElement('input')
-        _ipt.type = 'file'
-        _ipt.onchange = () => {
-            const file = _ipt.files?.[0]
-            if(!file) reject('No File!')
-            else {
-                const reader = new FileReader()
-                reader.onload = () => {
-                    resolve(reader.result!)
-                }
-                reader[`readAs${ target }`](file)
-            }
+        const reader = new FileReader()
+        reader.onload = () => {
+            resolve(reader.result!)
         }
-        _ipt.click()
+        reader.onerror = reject
+        reader[`readAs${ target }`](file)
     })
 }
 
