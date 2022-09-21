@@ -1,8 +1,8 @@
 import Styles from "./WorkspaceTemplate.module.scss";
 import { useState } from "react";
 import { SelectButton } from "primereact/selectbutton";
-import "../scripts/hashEncode"
-import { HashEncode, HashType } from "../scripts/hashEncode";
+import "../scripts/hash"
+import { ResultEncoder, EncodeType } from "../scripts/hash";
 import toast from "react-hot-toast";
 
 export type WorkspaceTemplateConfig = {
@@ -20,7 +20,7 @@ export type WorkspaceTemplateConfig = {
 export default (props: WorkspaceTemplateConfig) => {
     const [ text, setText ] = useState('')
     const [ result, setResult ] = useState('')
-    const [ outType, setOutType ] = useState<HashType>('Base64')
+    const [ outType, setOutType ] = useState<EncodeType>('Base64')
 
     return (
         <div className={ Styles.workspaceTemplate }>
@@ -43,7 +43,7 @@ export default (props: WorkspaceTemplateConfig) => {
             <div className={ Styles.outTypeBox }>
                 <SelectButton
                     value={ outType }
-                    options={ Object.keys(HashEncode) }
+                    options={ Object.keys(ResultEncoder) }
                     optionDisabled={ (val) => {
                         return val === 'Utf8'
                     } }
@@ -61,7 +61,7 @@ export default (props: WorkspaceTemplateConfig) => {
                                      role="button" key={ idx }
                                      onClick={ () => {
                                          try {
-                                             const result = hashItem.fn(text, HashEncode[outType])
+                                             const result = hashItem.fn(text, ResultEncoder[outType])
                                              setResult(result)
                                              toast.success(outType)
                                          }
